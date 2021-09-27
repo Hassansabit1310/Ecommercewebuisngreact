@@ -11,6 +11,9 @@ import CategoryList from './components/categorylist';
 import Profile from './components/profile';
 import ProductDetails from './components/productdetails';
 import SignUp from './components/signup';
+import EditProduct from './components/editproducts';
+import AddNewUser from './components/adduser';
+import { ProtectedRoute } from './protetcted.routes';
 
 const App=()=>{
   return (
@@ -28,16 +31,32 @@ const App=()=>{
       <Route exact path='/login'>
         <AdminLogin/>
       </Route>
-      <Route exact path='/dashboard'>
+      {/* <Route exact path='/dashboard'>
         <ShowDashboad/>
-      </Route>
+      </Route> */}
+      
+      <ProtectedRoute
+      exact path='/dashboard'
+      component={ShowDashboad}
+      
+      />
+
+
+
       <Route exact path='/addcat'>
                    
                    <AddCategory/>
                 </Route>
-       <Route exact path ='/addprod'>
+      
+      
+       {/* <Route exact path ='/addprod'>
          <AddProduct/>
-         </Route>  
+         </Route>   */}
+         <ProtectedRoute
+          exact path ='/addprod'
+          component={AddProduct}
+          />
+
 
          <Route exact path='/catlist'   >
            <CategoryList/>
@@ -52,10 +71,25 @@ const App=()=>{
           <ProductDetails/>
 
         </Route>  
+        <Route exact path='/edit-product/:id'>
+
+          <EditProduct/>
+
+        </Route> 
+        
 
         <Route exact path='/signup'>
           <SignUp/>
-        </Route>  
+        </Route> 
+
+        {/* <Route exact path='/adduser'>
+          <AddNewUser/>
+        </Route>   */}
+
+        <ProtectedRoute
+          exact path ='/adduser'
+          component={AddNewUser}
+          />
      
     </Switch>
      

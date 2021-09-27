@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useRef } from 'react'
-import { makeStyles } from '@material-ui/core/styles';
+
 import Paper from '@material-ui/core/Paper';
 
 import TextField from '@material-ui/core/TextField';
@@ -19,6 +19,7 @@ import { Link } from '@material-ui/core';
 import  { Formik,Form, Field, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import AuthHeader from '../services/auth-header';
+import RequestMyDetail from '../store/action/getmydetailaction';
 
 
 const AdminLogin=()=>{
@@ -55,46 +56,14 @@ const AdminLogin=()=>{
   const passwordInput=useRef()
   const dispatch=useDispatch()
 
-    const useStyles = makeStyles((theme) => ({
-        root: {
-          flexGrow: 1,
-          
-        },
-        paper: {
-          padding: theme.spacing(2),
-          textAlign: 'center',
-          color: theme.palette.text.secondary,
-          
-        },
-        div:{
-            textAlign: 'center',
-            backGroundColor:"blue"
-           
-            
-
-        },
-        textField: {
-            width: '90%',
-            marginLeft: 'auto',
-            marginRight: 'auto',
-            color: 'white',
-            paddingBottom: 0,
-            marginTop: 0,
-            fontWeight: 500
-        },
-        notchedOutline: {
-            borderWidth: "3px",
-            borderColor: "white !important"
-          }
-      }));
-      
-      const classes = useStyles();
+   
       
      
      
     
      
        useEffect(()=>{
+        
         
         const user = JSON.parse(localStorage.getItem('user'));
 
@@ -155,7 +124,7 @@ const AdminLogin=()=>{
 
         <Grid>
 
-          <Paper elevation={1000} style={paperStyle}>
+          <Paper elevation={300} style={paperStyle}>
 
             <Grid align='center'>
             <Avatar style={avatarStyle}> <LockIcon/> </Avatar>
@@ -203,7 +172,7 @@ const AdminLogin=()=>{
 
        </Typography>
             
-            <h1>{message}</h1>
+            <h4>{message}</h4>
 
           </Paper>
 

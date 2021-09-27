@@ -10,5 +10,7 @@ export const ActionTypes={
     Logged_In:"Logged_In",
     Logged_Out:"Logged_Out",
     Get_Product:"Get_Product",
-    Add_Cart:"Add_Cart"
+    Add_Cart:"Add_Cart",
+    Get_Detail:"Get_Detail",
+    Add_User:"Add_User"
 }

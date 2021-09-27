@@ -12,6 +12,8 @@ const ShowDashboad=()=>{
 
   const LogOutUser=()=>{
     localStorage.removeItem("user")
+    localStorage.removeItem("token")
+
     history.push('/')
 
   }
@@ -24,11 +26,9 @@ const ShowDashboad=()=>{
         <i 
                 className="far fa-plus-square">
                 </i>Add Category
-
-        </NavLink>
-          
-
-          </div>
+          </NavLink>
+           </div>
+         
           <div class="box-2">
 
           <NavLink className="nav-link" to="/addprod" exact>
@@ -37,10 +37,9 @@ const ShowDashboad=()=>{
                 </i>Add Products
 
         </NavLink>
+         </div>
          
-          
-
-          </div>
+         
           <div class="box-2">
           <NavLink className="nav-link" to="/catlist" exact>
         <i 
@@ -48,18 +47,23 @@ const ShowDashboad=()=>{
                 </i>Categories
 
         </NavLink>
-
+        </div>
         
          
           
 
-          </div>
+         
+          <div class="box-2">
+          <NavLink className="nav-link" to="/adduser" exact>
+          <i class="fa-solid fa-user-plus"></i>Add User
+
+        </NavLink>
+         </div>
+          
+          
+          
           <div class="box-2">
           <Button variant="contained" size="small" color="primary" onClick={LogOutUser}>Log out</Button>
-         
-         
-          
-
           </div>
           
           

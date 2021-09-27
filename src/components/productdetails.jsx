@@ -16,6 +16,8 @@ import { Button } from '@material-ui/core'
 const ProductDetails=()=>{
     const user = JSON.parse(localStorage.getItem('user'));
 
+    const {token}=useSelector(store=>store.tokenReducer)
+
     const {isLoggedin}=useSelector(store=>store.loginStatusReducer)
 
     const {product}=useSelector(store=>store.getProductReducer)
@@ -23,6 +25,8 @@ const ProductDetails=()=>{
     const {id}=useParams()
     const history=useHistory()
     const dispatch=useDispatch()
+
+    const [count,setCount]=useState(0)
    
     
 
@@ -37,8 +41,36 @@ const ProductDetails=()=>{
     const AddtoCart=()=>{
 
         isLoggedin && user=="user"?history.push('/addtocart'):history.push('/login')
+
+        axios.post("http://localhost:8080/cart",{
+            product:{
+                id: id,
+                quantity : count
+            },
+
+        },
+        {
+            headers:{
+    
+                authorization: `bearer ${token}`
+            }
+         
+        }
+    
+        )
        
         
+    }
+
+    const AddCartToproduct=()=>{
+
+    }
+
+    const Increment=()=>{
+        setCount(count+1)
+    }
+    const Decrement=()=>{
+        setCount(count-1)
     }
 
 //    const DeleteDetails=()=>{
@@ -70,7 +102,16 @@ const ProductDetails=()=>{
                 <Button variant="contained" color="primary">Delete</Button>
                 
                 </>:
+                <>
+                 <Button onClick={()=>{Increment()}} variant="contained">+</Button>
+                 <p>{count}</p>
+                 <Button onClick={()=>{Decrement()}} variant="contained">-</Button>
                 <Button variant="contained" color="primary" onClick={AddtoCart}>Add to Cart</Button>
+                <Button variant="contained" color="primary">Proceed To Checkout</Button>
+                
+                
+                </>
+               
                 }
 
                 

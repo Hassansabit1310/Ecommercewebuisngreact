@@ -101,7 +101,7 @@ const Navbar = () => {
               </NavLink>
             </li>
            
-            {isLoggedin && user? <li className="nav-item active">
+            {user? <li className="nav-item active">
               <NavLink className="nav-link" to="/profile" exact>
                 <i 
                 className="fas fa-user">

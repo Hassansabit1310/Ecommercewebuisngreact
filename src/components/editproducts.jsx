@@ -1,4 +1,3 @@
-
 import React, { useState,useEffect } from 'react'
 import { FormControl, Grid, InputLabel, Paper, Select, TextField } from '@material-ui/core'
 import {Button} from '@material-ui/core'
@@ -7,11 +6,18 @@ import {useDispatch,useSelector} from 'react-redux'
 import RequestCategoryList from '../store/action/getcategoryaction'
 
 
-import RequestAddprouct from '../store/action/addproduct'
 
-const AddProduct=()=>{
+import axios from 'axios'
+import { useHistory, useParams } from 'react-router'
 
-  const paperStyle={padding:20, height:'100vh',width:280 ,margin:'20px auto'}
+const EditProduct=()=>{
+
+    
+
+    const history=useHistory()
+
+    const {id}=useParams()
+    const paperStyle={padding:20, height:'70vh',width:280 ,margin:'20px auto'}
 
 
 
@@ -35,17 +41,16 @@ const AddProduct=()=>{
     }
     
       }
-
       useEffect(
-          ()=>{
+        ()=>{
 
-            dispatch(RequestCategoryList())
+          dispatch(RequestCategoryList())
 
 
-          },[]
-      )
-      
-      const convertBase64 = (file) => {
+        },[]
+    ) 
+    
+    const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
           const fileReader = new FileReader();
           fileReader.readAsDataURL(file);
@@ -61,31 +66,49 @@ const AddProduct=()=>{
       };
 
       const UploadImage=async (e)=>{
-          const file=e.target.files[0]
-          const photos=await convertBase64(file)
-          setPhoto(photos)
-         
-      }
-     
+        const file=e.target.files[0]
+        const photos=await convertBase64(file)
+        setPhoto(photos)
+       
+    }
 
-      const onSubmit=(props)=>{
+
+
+    
+    
+
+    const onSubmit=(props)=>{
 
         const {image,title,price,description,stock,category}=props
         const {_id}=category
          const product_price=parseInt(price)
         
 
-        dispatch(RequestAddprouct(title, product_price, description,photo,stock,_id,token))
+       axios.patch(`http://localhost:8080/products/${id}`,{
+        title: title,
+        price: product_price,
+        description: description,
+        image: photo,
+        stock: stock,
+        category_id: _id
+       },
+       {
+        headers:{
+
+            authorization: `bearer ${token}`
+        }
+   
+        
+    }).then(  history.push('/home'))
 
        
 
 
       }
-      
-    
-    return(
+
+    return (
         <>
-        <p>hello</p>
+        
          <Grid ali>
         <Paper elevation={1000} style={paperStyle} >
         <Formik initialValues={initialValues}  onSubmit={onSubmit}>
@@ -104,15 +127,15 @@ const AddProduct=()=>{
                  <Field as={TextField}  label="Stock" name='stock'placehloder="Enter Description"fullwidth/>
                 <FormControl fullWidth>
                 <InputLabel>Category</InputLabel>
-                <Field as="select"   label="Product Name" name="category._id">
+                <Field as={Select}   label="Product Name" name="category._id">
                  {categoryList.map(category=>(
-                         <option   key={category.name} value={category._id}> {category.name}</option>
+                         <option   key={category._id} value={category._id}> {category.name}</option>
                      ))}
                  </Field>
                 </FormControl>
                 
                  
-                 {/* <select  name='catagory._id'>
+                 <select  name='catagory._id'>
                     
                      {categoryList.map(category=>(
                          <option  key={category._id} value={category._id}>choose one --{category.name}</option>
@@ -121,12 +144,12 @@ const AddProduct=()=>{
                      
 
                  </select>
-                 */}
+                
 
      
      
      
-                 <Button  type='submit' color='primary' variant="contained"  fullWidth >Add Product</Button>
+                 <Button  type='submit' color='primary' variant="contained"  fullWidth >Add Category</Button>
                  
                  </Form>
 
@@ -146,7 +169,5 @@ const AddProduct=()=>{
         </>
     )
 }
- export default AddProduct
 
-
-    
+export default EditProduct

@@ -14,7 +14,7 @@ const SetLoginData=(email,password)=>{
         axios.post(URL+"signin",{
             email:email ,
             password:password
-          }).then(response=>{ dispatch(GetLoginData(response.data)); localStorage.setItem("user",JSON.stringify(response.data.userInfo.role)); dispatch(SetToken(response.data.userInfo.token));dispatch(SetLoginStatus()) })
+          }).then(response=>{ dispatch(GetLoginData(response.data)); localStorage.setItem("user",JSON.stringify(response.data.userInfo.role));localStorage.setItem("token",JSON.stringify(response.data.userInfo.token)); dispatch(SetToken(response.data.userInfo.token));dispatch(SetLoginStatus()) })
          
           
     }
