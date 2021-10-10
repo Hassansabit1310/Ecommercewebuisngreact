@@ -4,7 +4,10 @@ import AddUserReducer from "./adduserreducer";
 
 import GetCategoryReducer from "./getcategoryredicer";
 import GetDetailReducer from "./getdetailreducer";
+import GetMyCartReducer from "./getmycartreducer";
+import GetOrderListReducer from "./getorderlistreducer";
 import { GetProductReducer } from "./getproductdetailsreducer";
+import GetUsersReducer from "./getusersreducer";
 import { loginDataReducer } from "./logindatreducer";
 import LoginStatusReducer from "./loginstatusreducer";
 import { productListReducer } from "./productlistreducer";
@@ -18,6 +21,9 @@ export const mainReducer=combineReducers({
     loginStatusReducer:LoginStatusReducer,
     getProductReducer:GetProductReducer,
     getDetailReducer:GetDetailReducer,
-    addUserReducer:AddUserReducer
+    addUserReducer:AddUserReducer,
+    getUsersReducer:GetUsersReducer,
+    getMyCartReducer:GetMyCartReducer,
+    getOrderListReducer:GetOrderListReducer
     
 })

@@ -62,7 +62,15 @@ const ProductDetails=()=>{
         
     }
 
-    const AddCartToproduct=()=>{
+    const CheckOut=()=>{
+        axios.get("http://localhost:8080/order/checkout",
+        {
+            headers:{
+    
+                authorization: `bearer ${token}`
+            }
+         
+        })
 
     }
 
@@ -107,7 +115,7 @@ const ProductDetails=()=>{
                  <p>{count}</p>
                  <Button onClick={()=>{Decrement()}} variant="contained">-</Button>
                 <Button variant="contained" color="primary" onClick={AddtoCart}>Add to Cart</Button>
-                <Button variant="contained" color="primary">Proceed To Checkout</Button>
+                <Button variant="contained" color="primary" onClick={CheckOut}>Proceed To Checkout</Button>
                 
                 
                 </>

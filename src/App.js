@@ -14,6 +14,9 @@ import SignUp from './components/signup';
 import EditProduct from './components/editproducts';
 import AddNewUser from './components/adduser';
 import { ProtectedRoute } from './protetcted.routes';
+import UserList from './components/userlist';
+import MyCart from './components/mycart';
+import GetOrderLists from './components/orderlist';
 
 const App=()=>{
   return (
@@ -56,6 +59,17 @@ const App=()=>{
           exact path ='/addprod'
           component={AddProduct}
           />
+          
+          
+          <ProtectedRoute
+          exact path ='/users'
+          component={UserList}
+          />
+
+<ProtectedRoute
+          exact path ='/mycart'
+          component={MyCart}
+          />
 
 
          <Route exact path='/catlist'   >
@@ -89,6 +103,12 @@ const App=()=>{
         <ProtectedRoute
           exact path ='/adduser'
           component={AddNewUser}
+          />
+
+          
+        <ProtectedRoute
+          exact path ='/orders'
+          component={GetOrderLists}
           />
      
     </Switch>

@@ -48,6 +48,8 @@ const ShowDashboad=()=>{
 
         </NavLink>
         </div>
+
+        
         
          
           
@@ -59,6 +61,25 @@ const ShowDashboad=()=>{
 
         </NavLink>
          </div>
+
+         <div class="box-2">
+          <NavLink className="nav-link" to="/users" exact>
+        <i 
+                className="fa fa-list-alt">
+                </i>Users
+
+        </NavLink>
+        </div>
+        
+        <div class="box-2">
+          <NavLink className="nav-link" to="/orders" exact>
+        <i 
+                className="fa fa-list-alt">
+                </i>Orders
+
+        </NavLink>
+        </div>
+        
           
           
           

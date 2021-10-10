@@ -115,6 +115,15 @@ const Navbar = () => {
                </i>Sign in
              </NavLink>
            </li>}
+
+           {
+             user==="user"? <li className="nav-item"><NavLink className="nav-link" to="/mycart" exact>
+             <i 
+             className="fas fa-shopping-cart">
+             </i>My Cart
+           </NavLink>
+         </li>:null}
+           
            
         </ul>
       </div>

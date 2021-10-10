@@ -12,5 +12,8 @@ export const ActionTypes={
     Get_Product:"Get_Product",
     Add_Cart:"Add_Cart",
     Get_Detail:"Get_Detail",
-    Add_User:"Add_User"
+    Add_User:"Add_User",
+    Get_Users:"Get_Users",
+    Get_MyCart:"Get_MyCart",
+    Get_Orders:"Get_Orders"
 }
